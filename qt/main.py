@@ -9,7 +9,7 @@
 
 from PyQt4 import QtCore, QtGui
 
-from config_search import Interface
+#from config_search import Interface
 from dialog_config_wait import Inter
 
 try:
@@ -87,9 +87,6 @@ class Ui_MainWindow(object):
 
     def config_search_clemente(self):
         a = Inter()
-        #a.exec()
-
-        #QDataWidgetMapper 
 
 if __name__ == "__main__":
     import sys
