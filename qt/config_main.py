@@ -1,29 +1,51 @@
-# -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
-#
-# Created: Tue Oct 29 09:55:29 2013
-#      by: PyQt4 UI code generator 4.10.1
-#
-# WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
+from main import Ui_MainWindow
 
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+class ConfigDialog():
+    
+    def __init__(self):
+        #self.app = QtGui.QApplication(sys.argv)
+        self.Dialog = QtGui.QDialog()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        
+        # add atributes
+        self.add_atributes()
+        # add functions
+        self.add_functions()
+        # add events
+        self.add_events()
+        
+    def data(self,data):
+        """ function to receive vars of this father """
+        self.data_conex = data
+        
+    def run(self):
+        self.Dialog.show()
+        #sys.exit(self.app.exec_())
+                
+    def add_atributes(self):
+        self.ui.data_conex = {"ip":"", "port":""}           
+        
+    def add_functions(self):
+        #self.ui.print_ok = self.print_ok
+        self.ui.accept_data = self.accept_data
+        
+    def add_events(self):
+        QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.close)
+        QtCore.QObject.connect(self.action_search_clemente, QtCore.SIGNAL(_fromUtf8("activated()")), self.config_search_clemente)
+        QtCore.QObject.connect(self.action_search_icaro, QtCore.SIGNAL(_fromUtf8("activated()")), self.print_data_conex)    
+        
+    # functions
+    
 
 class Ui_MainWindow(object):
+    
+    data_conex = {"ip":"", "port":""}    
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(800, 600)
@@ -67,6 +89,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.close)
+        QtCore.QObject.connect(self.action_search_clemente, QtCore.SIGNAL(_fromUtf8("activated()")), self.config_search_clemente)
+        QtCore.QObject.connect(self.action_search_icaro, QtCore.SIGNAL(_fromUtf8("activated()")), self.print_data_conex)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -80,4 +104,22 @@ class Ui_MainWindow(object):
         self.action_search_icaro.setText(_translate("MainWindow", "Search", None))
         self.actionConnect.setText(_translate("MainWindow", "Connect", None))
         self.actionDisconnect.setText(_translate("MainWindow", "Disconnect", None))
+
+    def config_search_clemente(self):
+        #a = ClementeSearch(self.ip,self.port)
+        a = ConfigDialog()
+        a.data(self.data_conex)
+        a.run()
+        
+    def print_data_conex(self):
+        print self.data_conex
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWindow = QtGui.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 

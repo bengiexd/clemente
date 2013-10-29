@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog_config_wait.ui'
 #
-# Created: Tue Oct 22 08:32:56 2013
+# Created: Mon Oct 28 23:38:06 2013
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,34 +33,27 @@ class Ui_Dialog(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.label_2 = QtGui.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(50, 80, 59, 15))
+        self.label_2.setGeometry(QtCore.QRect(60, 80, 41, 16))
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.label = QtGui.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(80, 40, 21, 16))
         self.label.setObjectName(_fromUtf8("label"))
-        self.textEdit_2 = QtGui.QTextEdit(Dialog)
-        self.textEdit_2.setGeometry(QtCore.QRect(110, 70, 201, 31))
-        self.textEdit_2.setObjectName(_fromUtf8("textEdit_2"))
-        self.textEdit = QtGui.QTextEdit(Dialog)
-        self.textEdit.setGeometry(QtCore.QRect(110, 30, 201, 31))
-        self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.text_edit_port = QtGui.QTextEdit(Dialog)
+        self.text_edit_port.setGeometry(QtCore.QRect(110, 70, 201, 31))
+        self.text_edit_port.setObjectName(_fromUtf8("text_edit_port"))
+        self.text_edit_ip = QtGui.QTextEdit(Dialog)
+        self.text_edit_ip.setGeometry(QtCore.QRect(110, 30, 201, 31))
+        self.text_edit_ip.setObjectName(_fromUtf8("text_edit_ip"))
 
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
+        #QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
-        self.label_2.setText(_translate("Dialog", "Puerto:", None))
+        self.label_2.setText(_translate("Dialog", "Port:", None))
         self.label.setText(_translate("Dialog", "Ip:", None))
 
 
-class Inter():
-    def __init__(self):
-        Dialog = QtGui.QDialog()
-        ui = Ui_Dialog()
-        ui.setupUi(Dialog)
-        Dialog.show()
-        Dialog.exec_()
-
+    
