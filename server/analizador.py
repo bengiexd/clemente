@@ -1,5 +1,5 @@
 import re
-import apicaro
+#import apicaro
 import time
 
 class Analizador():

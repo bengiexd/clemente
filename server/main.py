@@ -34,7 +34,8 @@ def main():
 					print "unknown parameter", parameter
 					exit()				
 	
-	servidor = Server(ip=_ip,port=_port)
+	#servidor = Server(ip=_ip, port=_port)
+	servidor = Server()
 	return 0
 
 if __name__ == '__main__':

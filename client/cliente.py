@@ -38,33 +38,41 @@ class Cliente(threading.Thread):
 			tiene como parametros ir y port 
 			para establecer conexion con el servidor.
 		"""
+		
+		self._ip = ip
+		self._port = port
+		
 		threading.Thread.__init__(self)
+		
+		
+	def connect_with_server(self):
 		try:
 			# Instanciamos un objeto de la clase Socalo
 			self.Socalo = socket.socket()
 			# Nos conectamos con el servidor utilizando ip y port del servidor
-			self.Socalo.connect((str(ip), int(port)))
+			self.Socalo.connect((str(self._ip), int(self._port)))
+			return True
 		except Exception, ex:
 			print "No se puede establecer la comunicacion"
-			exit(0)
-		
+			#exit(0)
+			return False
+			
 
 	def run(self):		
 		while self.activado:
 			pass
 		print "cliente desconectado"
 		return
-			
+
 	def Stop(self):
 		self.activado = 0
-		self.Socalo.close()				
+		self.Socalo.close()
 			
 	def Recived(self):
 		return self.Socalo.recv(1024)
 
-
 	def Send(self,mensaje):
-		self.Socalo.send(mensaje)	
+		self.Socalo.send(mensaje)
 		return self.Socalo.recv(1024)
 
 

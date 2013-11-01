@@ -44,7 +44,6 @@ class Server(Device):
             self.iniciar(sc)
             self.start()
 
-
     def shut_down_server(self):
     	
     	""" shut down the server """
