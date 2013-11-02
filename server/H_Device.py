@@ -8,12 +8,10 @@ class Device(threading.Thread, analizador.Analizador):
         thread that handles a device connected
     """
     
-    socket = None    
+    socket = None
 
-    def __init__(self):
-        self.iniciar_icaro()
-        pass
-
+    def __init__(self):        
+        pass    
     
     def iniciar(self,socket):
         
@@ -30,8 +28,7 @@ class Device(threading.Thread, analizador.Analizador):
         
         if pkt_rec:
             print "pkt recivido:"+str(pkt_rec)
-            if self.resolver(pkt_rec):
-                print "ok enviado"
+            if self.resolver(pkt_rec):                
                 self.socket.send("OK")
             else:
                 self.socket.send("ERROR")

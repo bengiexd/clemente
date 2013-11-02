@@ -17,7 +17,7 @@ class Server(Device):
     _port = 9000
     _nro_max_devices = 100
 
-    def __init__(self, ip=_ip, port=_port):        
+    def __init__(self, ip=_ip, port=_port):      
     	
     	"""	start the server """
                 
@@ -26,6 +26,9 @@ class Server(Device):
         if port:
             self._port = int(port)
         
+    def set_icaro(self,icaro):
+        self.icaro = icaro
+
     def run_server(self):
         try:
             self._socket_server = socket.socket()
@@ -46,7 +49,7 @@ class Server(Device):
         
         while 1:
             (sc, addr) = self._socket_server.accept()
-            print "connected client: ",addr
+            print "connected client: ",addr            
             self.iniciar(sc)
             self.start()
 

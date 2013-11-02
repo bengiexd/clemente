@@ -3,8 +3,12 @@ import re
 import time
 
 class Analizador():
+    
+    icaro = None
+    
     direcciones = {'ADELANTE':"Adelante",'ATRAS':"Atras",
-                   'IZQUIERDA':'Izquierda','DERECHA':"Derecha"}        
+                   'IZQUIERDA':'Izquierda','DERECHA':"Derecha",
+                   'LEDS':'Leds'}        
 
     def analizarSintaxis(self,pkt_texto):
         """
@@ -53,32 +57,22 @@ class Analizador():
 
         func = pkt_dec['func']
 
-        if func == 'Adelante':
+        if func == 'Leds':
+            self.leds()
+        elif func == 'Adelante':
             self.Adelante()
             return True
         elif func == 'Atras':
             self.Atras()
             return True
-        return False
+        return False            
 
-    def iniciar_icaro(self):
-        self.icaro = apicaro.puerto()
-        if self.icaro.iniciar():
-            print "icaro iniciado"            
-        else:
-            print "no se puede iniciar icaro"        
-        #time.sleep(2)
-        #icaro.cerrar()
-        
-    def stop_icaro(self):
-        
-        """ parar icaro """
-        
-        self.icaro.cerrar()
+    def leds(self):
+        self.icaro.activar(255)
 
     def Adelante(self):
-        print 'Adelante'        
-        icaro.activar_servo(1,200)            
+        #print 'Adelante'
+        self.icaro.activar_servo(1,200)
         time.sleep(2)        
 
     def Atras(self):

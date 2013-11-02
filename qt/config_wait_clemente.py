@@ -7,7 +7,7 @@ from ServerDevices import Server
 
 class ConfigDialogWaitClemente():
     
-    def __init__(self, data_conex):
+    def __init__(self, data_conex, icaro):
         
         self.Dialog = QtGui.QDialog()
         self.ui = Ui_Dialog()
@@ -15,6 +15,7 @@ class ConfigDialogWaitClemente():
                 
         # atributes
         self.data_conex = data_conex
+        self.icaro = icaro
         # add functions
         self.add_functions()
         # add events
@@ -44,6 +45,7 @@ class ConfigDialogWaitClemente():
             
             # search one specified server with client
             self.data_conex["socket"] = Server(ip=_ip, port=_port)
+            self.data_conex["socket"].set_icaro(self.icaro)
             
             if self.data_conex["socket"].run_server():
                 print "server inicialized correct"

@@ -64,14 +64,14 @@ class Cliente(threading.Thread):
 		print "cliente desconectado"
 		return
 
-	def Stop(self):
+	def stop(self):
 		self.activado = 0
 		self.Socalo.close()
 			
-	def Recived(self):
+	def recived(self):
 		return self.Socalo.recv(1024)
 
-	def Send(self,mensaje):
+	def send(self,mensaje):
 		self.Socalo.send(mensaje)
 		return self.Socalo.recv(1024)
 

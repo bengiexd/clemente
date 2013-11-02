@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui_main.ui'
 #
-# Created: Sat Nov  2 09:34:34 2013
+# Created: Sat Nov  2 10:37:51 2013
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,9 +57,12 @@ class Ui_MainWindow(object):
         self.action_disconnect_icaro.setObjectName(_fromUtf8("action_disconnect_icaro"))
         self.action_test_icaro = QtGui.QAction(MainWindow)
         self.action_test_icaro.setObjectName(_fromUtf8("action_test_icaro"))
+        self.action_test_clemente = QtGui.QAction(MainWindow)
+        self.action_test_clemente.setObjectName(_fromUtf8("action_test_clemente"))
         self.menuClemente.addAction(self.actionQuit)
         self.menuClemente_2.addAction(self.action_search_clemente)
         self.menuClemente_2.addAction(self.action_wait_clemente)
+        self.menuClemente_2.addAction(self.action_test_clemente)
         self.menuIcaro.addAction(self.action_search_icaro)
         self.menuIcaro.addAction(self.action_connect_icaro)
         self.menuIcaro.addAction(self.action_disconnect_icaro)
@@ -84,4 +87,5 @@ class Ui_MainWindow(object):
         self.action_connect_icaro.setText(_translate("MainWindow", "Connect", None))
         self.action_disconnect_icaro.setText(_translate("MainWindow", "Disconnect", None))
         self.action_test_icaro.setText(_translate("MainWindow", "Test", None))
+        self.action_test_clemente.setText(_translate("MainWindow", "Test", None))
 
