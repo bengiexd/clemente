@@ -48,13 +48,14 @@ class ConfigMain():
         self.ui.test_icaro = self.test_icaro
         self.ui.disconnect_icaro = self.disconnect_icaro        
 
-    def add_events(self):        
+    def add_events(self):
         QtCore.QObject.connect(self.ui.action_search_clemente, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.search_clemente)
         QtCore.QObject.connect(self.ui.action_wait_clemente, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.wait_clemente)
         QtCore.QObject.connect(self.ui.action_connect_icaro, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.connect_icaro)
         QtCore.QObject.connect(self.ui.action_disconnect_icaro, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.disconnect_icaro)
         QtCore.QObject.connect(self.ui.action_test_icaro, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.test_icaro)
         QtCore.QObject.connect(self.ui.action_test_clemente, QtCore.SIGNAL(_fromUtf8("activated()")), self.ui.test_clemente)
+        
         
     # functions
     def see_data(self):
