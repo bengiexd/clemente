@@ -25,14 +25,20 @@ class Server(Device):
             self._ip = ip
         if port:
             self._port = int(port)
-        print "ip: ",self._ip
-        print "port: ",self._port
-        self._socket_server = socket.socket()
-        self._socket_server.bind((self._ip,self._port))        
-        self._socket_server.listen(self._nro_max_devices)
-        print "server initiated"
-        # accept devices
-        self._accept_devices()
+        
+    def run_server(self):
+        try:
+            self._socket_server = socket.socket()
+            self._socket_server.bind((self._ip,self._port))        
+            self._socket_server.listen(self._nro_max_devices)
+            print "server initiated"
+            # accept devices
+            self._accept_devices()
+            return True
+        except Exception, ex:
+            print "error server don`t inizialized"
+            return False
+        
 
     def _accept_devices(self):
         

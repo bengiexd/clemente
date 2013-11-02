@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dialog_config_wait.ui'
+# Form implementation generated from reading ui file 'gui_config_ip_port.ui'
 #
-# Created: Mon Oct 28 23:38:06 2013
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Fri Nov  1 22:51:50 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -46,7 +46,7 @@ class Ui_Dialog(object):
         self.text_edit_ip.setObjectName(_fromUtf8("text_edit_ip"))
 
         self.retranslateUi(Dialog)
-        #QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -55,5 +55,3 @@ class Ui_Dialog(object):
         self.label_2.setText(_translate("Dialog", "Port:", None))
         self.label.setText(_translate("Dialog", "Ip:", None))
 
-
-    
