@@ -81,7 +81,7 @@ class ConfigDialogTestClemente():
         for i in range(8):
             n += str(self.buttons_leds[str(i)])            
         print n
-        n = int(n,2)
+        n = str(int(n,2))
         self.clemente.send(n)
         
     # functions
