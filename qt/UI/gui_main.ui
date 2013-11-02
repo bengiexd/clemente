@@ -41,8 +41,9 @@
      <string>Icaro</string>
     </property>
     <addaction name="action_search_icaro"/>
-    <addaction name="actionConnect"/>
-    <addaction name="actionDisconnect"/>
+    <addaction name="action_connect_icaro"/>
+    <addaction name="action_disconnect_icaro"/>
+    <addaction name="action_test_icaro"/>
    </widget>
    <addaction name="menuClemente"/>
    <addaction name="menuClemente_2"/>
@@ -69,14 +70,19 @@
     <string>Search</string>
    </property>
   </action>
-  <action name="actionConnect">
+  <action name="action_connect_icaro">
    <property name="text">
     <string>Connect</string>
    </property>
   </action>
-  <action name="actionDisconnect">
+  <action name="action_disconnect_icaro">
    <property name="text">
     <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="action_test_icaro">
+   <property name="text">
+    <string>Test</string>
    </property>
   </action>
  </widget>
