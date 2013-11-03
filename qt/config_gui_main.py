@@ -28,7 +28,7 @@ class ConfigMain():
         self.icaro = None
         self.data_conex = {"ip":"", "port":"", "socket":None}
         
-        # add functions
+        # add functions 
         self.add_functions()
         
         # add events

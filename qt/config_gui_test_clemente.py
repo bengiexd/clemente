@@ -76,12 +76,12 @@ class ConfigDialogTestClemente():
         QtCore.QObject.connect(self.ui.push_button_6, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_6)
         QtCore.QObject.connect(self.ui.push_button_7, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_7)
         
-    def leds(self):
+    def leds(self): 
         n = ""
         for i in range(8):
             n += str(self.buttons_leds[str(i)])            
         print n
-        n = str(int(n,2))
+        n = "leds(" + str(int(n,2)) + ")"
         self.clemente.send(n)
         
     # functions
@@ -99,7 +99,7 @@ class ConfigDialogTestClemente():
         else:
             self.ui.push_button_0.setIcon(self.icon_off)
             self.buttons_leds["0"] = 0
-        self.leds()
+        self.leds()  
             
     def clicked_button_1(self):
         if self.buttons_leds["1"] == 0:
@@ -109,7 +109,7 @@ class ConfigDialogTestClemente():
             self.ui.push_button_1.setIcon(self.icon_off)
             self.buttons_leds["1"] = 0
         self.leds()
-            
+             
     def clicked_button_2(self):
         if self.buttons_leds["2"] == 0:
             self.ui.push_button_2.setIcon(self.icon_green)

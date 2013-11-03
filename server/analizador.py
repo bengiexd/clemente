@@ -57,18 +57,18 @@ class Analizador():
 
         func = pkt_dec['func']
 
-        if func == 'Leds':
-            self.leds()
+        if func == 'leds':
+            self.leds(pkt_dec['valors'])
         elif func == 'Adelante':
             self.Adelante()
             return True
         elif func == 'Atras':
             self.Atras()
-            return True
+            return True 
         return False            
 
-    def leds(self):
-        self.icaro.activar(255)
+    def leds(self, valors):
+        self.icaro.activar(valors[0])
 
     def Adelante(self):
         #print 'Adelante'
