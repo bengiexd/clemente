@@ -79,8 +79,8 @@ class ConfigDialogTestClemente():
     def leds(self): 
         n = ""
         for i in range(8):
-            n += str(self.buttons_leds[str(i)])            
-        print n
+            n += str(self.buttons_leds[str(i)])
+        n = n[::-1]
         n = "leds(" + str(int(n,2)) + ")"
         self.clemente.send(n)
         
