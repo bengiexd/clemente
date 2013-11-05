@@ -8,6 +8,8 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
+sys.path.append('./../UI/')
+
 class ConfigDialogTestIcaro():
     
     def __init__(self, icaro):

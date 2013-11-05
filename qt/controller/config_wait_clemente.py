@@ -2,7 +2,10 @@ import sys
 from PyQt4 import QtCore, QtGui
 from gui_config_ip_port import Ui_Dialog
 
-sys.path.append('./../server/')
+sys.path.append('../../server/')
+
+sys.path.append('./../UI/')
+
 from ServerDevices import Server
 
 class ConfigDialogWaitClemente():

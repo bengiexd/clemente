@@ -1,5 +1,8 @@
 import sys
 from PyQt4 import QtCore, QtGui
+
+sys.path.append('./../UI/')
+
 from gui_test_clemente import Ui_Dialog
 
 try:
@@ -34,13 +37,13 @@ class ConfigDialogTestClemente():
         
     def add_icons_leds(self):
         self.icon_off = QtGui.QIcon()
-        self.icon_off.addPixmap(QtGui.QPixmap(_fromUtf8("UI/images/led_off.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_off.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_off.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.icon_red = QtGui.QIcon()
-        self.icon_red.addPixmap(QtGui.QPixmap(_fromUtf8("UI/images/led_red.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_red.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_red.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.icon_green = QtGui.QIcon()
-        self.icon_green.addPixmap(QtGui.QPixmap(_fromUtf8("UI/images/led_green.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_green.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_green.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.ui.push_button_0.setIcon(self.icon_off)
         self.ui.push_button_1.setIcon(self.icon_off)
@@ -76,7 +79,7 @@ class ConfigDialogTestClemente():
         QtCore.QObject.connect(self.ui.push_button_6, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_6)
         QtCore.QObject.connect(self.ui.push_button_7, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_7)
         
-    def leds(self): 
+    def leds(self):
         n = ""
         for i in range(8):
             n += str(self.buttons_leds[str(i)])

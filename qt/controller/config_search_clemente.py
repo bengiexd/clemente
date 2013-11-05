@@ -2,7 +2,9 @@ import sys
 from PyQt4 import QtCore, QtGui
 from gui_config_ip_port import Ui_Dialog
 
-sys.path.append('./../client/')
+sys.path.append('./../UI/')
+
+sys.path.append('../../client/')
 from cliente import Cliente
 
 class ConfigDialogSearchClemente():

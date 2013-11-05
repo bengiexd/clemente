@@ -58,7 +58,7 @@ class Cliente(threading.Thread):
 			return False
 			
 
-	def run(self):		
+	def run(self):
 		while self.activado:
 			pass
 		print "cliente desconectado"

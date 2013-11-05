@@ -1,6 +1,8 @@
 import sys
 from PyQt4 import QtCore, QtGui
 
+sys.path.append('./../UI/')
+
 from gui_main import Ui_MainWindow
 from config_search_clemente import ConfigDialogSearchClemente
 from config_wait_clemente import ConfigDialogWaitClemente
@@ -34,9 +36,9 @@ class ConfigMain():
         # add events
         self.add_events()
 
-        self.run()
+        self.show()
 
-    def run(self):
+    def show(self):
         self.MainWindow.show()
         sys.exit(self.app.exec_())
 
