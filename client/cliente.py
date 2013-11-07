@@ -75,8 +75,3 @@ class Cliente(threading.Thread):
 		self.Socalo.send(mensaje)
 		return self.Socalo.recv(1024)
 
-
-
-					
-									
-		
