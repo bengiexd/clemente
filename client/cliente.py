@@ -30,7 +30,7 @@ class Cliente(threading.Thread):
     	Clase cliente para interactuar con el servidor
 	"""
 	mensaje = "Bienvenido Cliente"
-	activado = 1
+	activated = 1
     
 	def __init__(self, ip, port):
 		"""Class __init__
@@ -59,13 +59,13 @@ class Cliente(threading.Thread):
 			
 
 	def run(self):
-		while self.activado:
+		while self.activated:
 			pass
 		print "cliente desconectado"
 		return
 
 	def stop(self):
-		self.activado = 0
+		self.activated = 0
 		self.Socalo.close()
 			
 	def recived(self):
