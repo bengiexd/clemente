@@ -1,14 +1,8 @@
 import sys
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
 from gui_test_icaro import Ui_Dialog
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-sys.path.append('./../UI/')
+sys.path.append('./../UI Pyside/')
 
 class ConfigDialogTestIcaro():
     
@@ -34,7 +28,7 @@ class ConfigDialogTestIcaro():
         self.ui.test = self.test
         
     def add_events(self):        
-        QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.test)
+        QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL("clicked()"), self.ui.test)
         
     # functions
     def test(self):

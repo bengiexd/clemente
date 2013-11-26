@@ -11,7 +11,7 @@ class Device(threading.Thread, analizador.Analizador):
     socket = None
 
     def __init__(self):        
-        pass    
+        pass
     
     def iniciar(self,socket):
         
@@ -28,7 +28,7 @@ class Device(threading.Thread, analizador.Analizador):
         
         if pkt_rec:
             print "pkt recivido:"+str(pkt_rec)
-            if self.resolver(pkt_rec):                
+            if self.resolver(pkt_rec):
                 self.socket.send("OK")
             else:
                 self.socket.send("ERROR")

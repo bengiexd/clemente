@@ -1,10 +1,10 @@
 import sys
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
 from gui_config_ip_port import Ui_Dialog
 
+sys.path.append('./../UI Pyside/')
 sys.path.append('../../server/')
 
-sys.path.append('./../UI/')
 
 from ServerDevices import Server
 
@@ -49,11 +49,8 @@ class ConfigDialogWaitClemente():
             # search one specified server with client
             self.data_conex["socket"] = Server(ip=_ip, port=_port)
             self.data_conex["socket"].set_icaro(self.icaro)
-            
-            if self.data_conex["socket"].run_server():
-                print "server inicialized correct"
-            else:
-                print "error "
+            # start thread of server            
+            self.data_conex["socket"].start()
             
             self.Dialog.accept()
         else:

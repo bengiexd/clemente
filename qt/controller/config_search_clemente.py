@@ -1,8 +1,8 @@
 import sys
-from PyQt4 import QtCore, QtGui
-from gui_config_ip_port import Ui_Dialog
+from PySide import QtCore, QtGui
+sys.path.append('./../UI Pyside/')
 
-sys.path.append('./../UI/')
+from gui_config_ip_port import Ui_Dialog
 
 sys.path.append('../../client/')
 from cliente import Cliente

@@ -1,15 +1,10 @@
 import sys
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
 
-sys.path.append('./../UI/')
+sys.path.append('./../UI Pyside/')
 
 from gui_test_clemente import Ui_Dialog
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
 
 class ConfigDialogTestClemente():
     
@@ -37,13 +32,13 @@ class ConfigDialogTestClemente():
         
     def add_icons_leds(self):
         self.icon_off = QtGui.QIcon()
-        self.icon_off.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_off.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_off.addPixmap(QtGui.QPixmap("../media/images/led_off.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.icon_red = QtGui.QIcon()
-        self.icon_red.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_red.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_red.addPixmap(QtGui.QPixmap("../media/images/led_red.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.icon_green = QtGui.QIcon()
-        self.icon_green.addPixmap(QtGui.QPixmap(_fromUtf8("../media/images/led_green.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.icon_green.addPixmap(QtGui.QPixmap("../media/images/led_green.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.ui.push_button_0.setIcon(self.icon_off)
         self.ui.push_button_1.setIcon(self.icon_off)
@@ -70,14 +65,14 @@ class ConfigDialogTestClemente():
         QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.test)
                 
         # events colors leds
-        QtCore.QObject.connect(self.ui.push_button_0, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_0)
-        QtCore.QObject.connect(self.ui.push_button_1, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_1)
-        QtCore.QObject.connect(self.ui.push_button_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_2)
-        QtCore.QObject.connect(self.ui.push_button_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_3)
-        QtCore.QObject.connect(self.ui.push_button_4, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_4)
-        QtCore.QObject.connect(self.ui.push_button_5, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_5)
-        QtCore.QObject.connect(self.ui.push_button_6, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_6)
-        QtCore.QObject.connect(self.ui.push_button_7, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.clicked_button_7)
+        QtCore.QObject.connect(self.ui.push_button_0, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_0)
+        QtCore.QObject.connect(self.ui.push_button_1, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_1)
+        QtCore.QObject.connect(self.ui.push_button_2, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_2)
+        QtCore.QObject.connect(self.ui.push_button_3, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_3)
+        QtCore.QObject.connect(self.ui.push_button_4, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_4)
+        QtCore.QObject.connect(self.ui.push_button_5, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_5)
+        QtCore.QObject.connect(self.ui.push_button_6, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_6)
+        QtCore.QObject.connect(self.ui.push_button_7, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_7)
         
     def leds(self):
         n = ""
