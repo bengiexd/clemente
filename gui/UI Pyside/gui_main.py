@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui_main.ui'
 #
-# Created: Mon Nov 25 21:07:32 2013
+# Created: Tue Nov 26 16:24:42 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 27))
         self.menubar.setObjectName("menubar")
         self.menuClemente = QtGui.QMenu(self.menubar)
         self.menuClemente.setObjectName("menuClemente")
@@ -62,7 +62,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Clemente 0.1", None, QtGui.QApplication.UnicodeUTF8))
         self.menuClemente.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuClemente_2.setTitle(QtGui.QApplication.translate("MainWindow", "Clemente", None, QtGui.QApplication.UnicodeUTF8))
         self.menuIcaro.setTitle(QtGui.QApplication.translate("MainWindow", "Icaro", None, QtGui.QApplication.UnicodeUTF8))

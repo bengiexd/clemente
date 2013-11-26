@@ -1,0 +1,4 @@
+#MainWindow.setGeometry(300, 300, 250, 150)
+#MainWindow.setGeometry(QtGui.QDesktopWidget.availableGeometry())
+#MainWindow.showFullScreen()
+#MainWindow.showNormal()

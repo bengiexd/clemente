@@ -1,4 +1,5 @@
 import sys
+
 from PySide import QtCore, QtGui
 
 sys.path.append('./../UI Pyside/')
@@ -18,19 +19,19 @@ class ConfigMain():
     def __init__(self):
         self.app = QtGui.QApplication(sys.argv)
         self.MainWindow = QtGui.QMainWindow()
+        self.MainWindow.adjustSize()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
-
+        #details
+        self.MainWindow.setWindowIcon(QtGui.QIcon('./../media/icon/icaro.png'))
+        self.MainWindow.showMaximized()
         # atributes
         self.icaro = None
-        self.data_conex = {"ip":"", "port":"", "socket":None}
-        
-        # add functions 
+        self.data_conex = {"ip":"", "port":"", "socket":None}        
+        # add functions
         self.add_functions()
-        
         # add events
         self.add_events()
-
         self.show()
 
     def show(self):
