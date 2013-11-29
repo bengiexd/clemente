@@ -56,7 +56,7 @@ def main():
 						_port = arguments[nroArg+1]
 						play =1
 					elif parameter == "-ip":
-						_ip = arguments[nroArg+1]
+						_ip = arguments[nroArg+1] 
 						play =1
 					elif parameter == "-h" or parameter == "-v":
 						_arg[parameter]()
