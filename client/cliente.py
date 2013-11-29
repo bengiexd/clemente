@@ -38,10 +38,8 @@ class Cliente(threading.Thread):
 			tiene como parametros ir y port 
 			para establecer conexion con el servidor.
 		"""
-		
 		self._ip = ip
 		self._port = port
-		
 		threading.Thread.__init__(self)
 		
 		
