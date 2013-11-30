@@ -39,7 +39,7 @@ class HTTPServer(threading.Thread):
         with self.sync:
             cherrypy.server.socket_port = self._port
             #cherrypy.server.socket_host = optional hostname
-            cherrypy.tree.mount(Server(), "/", None)
+            cherrypy.tree.mount(Server(), "/", None)            
             cherrypy.engine.start()
         cherrypy.engine.block()
 

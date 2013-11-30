@@ -12,6 +12,8 @@ from config_wait_clemente import ConfigDialogWaitClemente
 from config_gui_test_icaro import ConfigDialogTestIcaro
 from config_gui_test_clemente import ConfigDialogTestClemente
 
+from tool_bar import MenuBar
+
 """
     data_conex = {"ip":"", "port":"", "socket":None}
 """
@@ -24,8 +26,13 @@ class ConfigMain():
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
         #details
+        # -- icon application
         self.MainWindow.setWindowIcon(QtGui.QIcon('./../media/icon/icaro.png'))
         self.MainWindow.showMaximized()
+        # create actions
+        self.create_actions()
+        # create toolbar
+        self.create_tool_bars()
         # atributes
         self.icaro = None
         self.ui.data_conex = {"ip":"", "port":"", "status_clemente":QtGui.QTextEdit(), "socket":None}
@@ -39,6 +46,43 @@ class ConfigMain():
     def show(self):
         self.MainWindow.show()
         sys.exit(self.app.exec_())
+        
+    def create_actions(self):
+        # for clemente
+        self.ui.act_search_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/clemente-search.png'), "Search Clemente", self.MainWindow)        
+        self.ui.act_search_clemente.triggered.connect(self.search_clemente)
+        self.ui.act_wait_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/wait_clemente.png'), "Wait Clemente", self.MainWindow)
+        self.ui.act_wait_clemente.triggered.connect(self.wait_clemente)
+        self.ui.act_test_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/clemente-test.png'), "Test Clemente", self.MainWindow)
+        self.ui.act_test_clemente.triggered.connect(self.test_clemente)
+        self.ui.act_exit = QtGui.QAction(QtGui.QIcon('./../media/icon/exit.png'), "Exit", self.MainWindow)
+        self.ui.act_exit.triggered.connect(self.MainWindow.close)
+        # for icaro
+        self.ui.act_icaro_connect = QtGui.QAction(QtGui.QIcon('./../media/icon/icaro.png'), "Connect Icaro", self.MainWindow)        
+        self.ui.act_icaro_connect.triggered.connect(self.connect_icaro)
+        self.ui.act_icaro_disconnect = QtGui.QAction(QtGui.QIcon('./../media/icon/icaro.png'), "Disconnect Icaro", self.MainWindow)        
+        self.ui.act_icaro_disconnect.triggered.connect(self.disconnect_icaro)
+        self.ui.act_icaro_test = QtGui.QAction(QtGui.QIcon('./../media/icon/icaro.png'), "Test Icaro", self.MainWindow)        
+        self.ui.act_icaro_test.triggered.connect(self.test_icaro)
+
+    def create_tool_bars(self):
+        # options clemente
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Search Clemente"))
+        fileToolBar.addAction(self.ui.act_search_clemente)
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Wait Clemente"))
+        fileToolBar.addAction(self.ui.act_wait_clemente)
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Test Clemente"))
+        fileToolBar.addAction(self.ui.act_test_clemente)        
+        # options icaro
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Connect Icaro"))
+        fileToolBar.addAction(self.ui.act_icaro_connect)
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Disconnect Icaro"))
+        fileToolBar.addAction(self.ui.act_icaro_disconnect)
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Test Icaro"))
+        fileToolBar.addAction(self.ui.act_icaro_test)
+        # options extra
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Exit"))
+        fileToolBar.addAction(self.ui.act_exit)
 
     def add_functions(self):
         self.ui.search_clemente = self.search_clemente
@@ -66,7 +110,7 @@ class ConfigMain():
         
     def search_clemente(self):
         form = ConfigDialogSearchClemente(self.ui.data_conex)
-        
+
     def wait_clemente(self):
         state = self.ui.data_conex["status_clemente"].toPlainText()
         if state == "wait":
@@ -74,6 +118,8 @@ class ConfigMain():
             self.ui.data_conex["http_server"].stop()
             self.ui.data_conex["status_clemente"].setText("stop")
             self.ui.action_wait_clemente.setText("Wait")
+            self.ui.act_wait_clemente.setText("Wait")
+            self.ui.act_wait_clemente.setIcon(QtGui.QIcon('./../media/icon/wait_clemente.png'))
         elif state == "stop":
             form = ConfigDialogWaitClemente(self.ui.data_conex, self.icaro) 
         
@@ -84,7 +130,9 @@ class ConfigMain():
         state = self.ui.data_conex["status_clemente"].toPlainText()
         if state == "wait":
             # set text action
+            self.ui.act_wait_clemente.setText("Stop Wait")
             self.ui.action_wait_clemente.setText("Stop Wait")
+            self.ui.act_wait_clemente.setIcon(QtGui.QIcon('./../media/icon/clemente_stop.png'))
         elif state == "stop":
             pass
         
@@ -96,7 +144,7 @@ class ConfigMain():
             print "icaro connect succesfull"
         else:
             print "error: icaro don't connect"
-            
+
     def test_icaro(self):
         if self.icaro is not None:
             form = ConfigDialogTestIcaro(self.icaro)

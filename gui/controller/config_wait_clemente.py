@@ -14,7 +14,9 @@ class ConfigDialogWaitClemente():
         self.Dialog = QtGui.QDialog()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.Dialog)
-                
+        
+        # set window title
+        self.Dialog.setWindowTitle('Wait Clemente')
         # atributes
         self.ui.data_conex = data_conex
         self.icaro = icaro
