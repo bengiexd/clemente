@@ -1,4 +1,5 @@
 import sys
+import time 
 
 from PySide import QtCore, QtGui
 
@@ -27,7 +28,8 @@ class ConfigMain():
         self.MainWindow.showMaximized()
         # atributes
         self.icaro = None
-        self.data_conex = {"ip":"", "port":"", "socket":None}        
+        self.ui.data_conex = {"ip":"", "port":"", "status_clemente":QtGui.QTextEdit(), "socket":None}
+        self.ui.data_conex["status_clemente"].setText("stop")
         # add functions
         self.add_functions()
         # add events
@@ -44,7 +46,8 @@ class ConfigMain():
         self.ui.test_clemente = self.test_clemente
         self.ui.connect_icaro = self.connect_icaro
         self.ui.test_icaro = self.test_icaro
-        self.ui.disconnect_icaro = self.disconnect_icaro        
+        self.ui.disconnect_icaro = self.disconnect_icaro     
+        self.ui.change_state_clemente = self.change_state_clemente   
 
     def add_events(self):
         QtCore.QObject.connect(self.ui.action_search_clemente, QtCore.SIGNAL("activated()"), self.ui.search_clemente)
@@ -53,22 +56,37 @@ class ConfigMain():
         QtCore.QObject.connect(self.ui.action_disconnect_icaro, QtCore.SIGNAL("activated()"), self.ui.disconnect_icaro)
         QtCore.QObject.connect(self.ui.action_test_icaro, QtCore.SIGNAL("activated()"), self.ui.test_icaro)
         QtCore.QObject.connect(self.ui.action_test_clemente, QtCore.SIGNAL("activated()"), self.ui.test_clemente)
-        
+        QtCore.QObject.connect(self.ui.data_conex["status_clemente"], QtCore.SIGNAL("textChanged()"), self.ui.change_state_clemente)        
         
     # functions
     def see_data(self):
-        ip = self.data_conex["ip"]
-        port = self.data_conex["port"]
+        ip = self.ui.data_conex["ip"]
+        port = self.ui.data_conex["port"]
         print ip, port
         
     def search_clemente(self):
-        form = ConfigDialogSearchClemente(self.data_conex)
+        form = ConfigDialogSearchClemente(self.ui.data_conex)
         
     def wait_clemente(self):
-        form = ConfigDialogWaitClemente(self.data_conex, self.icaro)
+        state = self.ui.data_conex["status_clemente"].toPlainText()
+        if state == "wait":
+            # stop server
+            self.ui.data_conex["http_server"].stop()
+            self.ui.data_conex["status_clemente"].setText("stop")
+            self.ui.action_wait_clemente.setText("Wait")
+        elif state == "stop":
+            form = ConfigDialogWaitClemente(self.ui.data_conex, self.icaro) 
         
-    def test_clemente(self):
-        form = ConfigDialogTestClemente(self.data_conex["socket"])
+    def test_clemente(self):        
+        form = ConfigDialogTestClemente(self.ui.data_conex["socket"])   
+        
+    def change_state_clemente(self):
+        state = self.ui.data_conex["status_clemente"].toPlainText()
+        if state == "wait":
+            # set text action
+            self.ui.action_wait_clemente.setText("Stop Wait")
+        elif state == "stop":
+            pass
         
     def connect_icaro(self):
         import apicaro

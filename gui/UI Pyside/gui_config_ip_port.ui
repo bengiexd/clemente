@@ -110,5 +110,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>text_edit_ip</sender>
+   <signal>textChanged()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>194</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

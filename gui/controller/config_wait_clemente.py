@@ -1,15 +1,14 @@
 import sys
 from PySide import QtCore, QtGui
-from gui_config_ip_port import Ui_Dialog
 
 sys.path.append('./../UI Pyside/')
-sys.path.append('../../server/')
+sys.path.append('../../server_rest/')
 
-
-from ServerDevices import Server
+from gui_config_ip_port import Ui_Dialog
+from server import HTTPServer
 
 class ConfigDialogWaitClemente():
-    
+
     def __init__(self, data_conex, icaro):
         
         self.Dialog = QtGui.QDialog()
@@ -17,7 +16,7 @@ class ConfigDialogWaitClemente():
         self.ui.setupUi(self.Dialog)
                 
         # atributes
-        self.data_conex = data_conex
+        self.ui.data_conex = data_conex
         self.icaro = icaro
         # add functions
         self.add_functions()
@@ -27,7 +26,7 @@ class ConfigDialogWaitClemente():
         self.show()
         
     def show(self):
-        self.Dialog.show()  
+        self.Dialog.show()
         
     def add_functions(self):
         self.ui.accept_data = self.accept_data
@@ -43,15 +42,13 @@ class ConfigDialogWaitClemente():
         _ip = str(self.ui.text_edit_ip.toPlainText())
         _port = str(self.ui.text_edit_port.toPlainText())
         if _ip is not "" and _port is not "":
-            self.data_conex["ip"] = _ip
-            self.data_conex["port"] = _port
-            
+            self.ui.data_conex["ip"] = _ip
+            self.ui.data_conex["port"] = int(_port)
             # search one specified server with client
-            self.data_conex["socket"] = Server(ip=_ip, port=_port)
-            self.data_conex["socket"].set_icaro(self.icaro)
-            # start thread of server            
-            self.data_conex["socket"].start()
-            
+            self.ui.data_conex["http_server"] = HTTPServer(ip=_ip, port=self.ui.data_conex["port"])            
+            # start thread of server
+            self.ui.data_conex["http_server"].start()
+            self.ui.data_conex["status_clemente"].setText("wait")            
             self.Dialog.accept()
         else:
             print "error datos incorrectos"

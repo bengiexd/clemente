@@ -1,7 +1,7 @@
 import sys
 
-from ServerDevices import Server
-		
+from server_test import Server
+
 def HELP():
 	print "help"
 
@@ -33,11 +33,27 @@ def main():
 				else:
 					print "unknown parameter", parameter
 					exit()				
-	
+
 	#servidor = Server(ip=_ip, port=_port)
 	servidor = Server()
+	servidor.run()
 	return 0
 
 if __name__ == '__main__':
 	main()
+
+
+	
+
+	
+
+
+	
+	
+	
+	
+	
+
+	
+	
 

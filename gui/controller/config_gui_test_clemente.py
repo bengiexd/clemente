@@ -62,7 +62,7 @@ class ConfigDialogTestClemente():
         self.ui.clicked_button_7 = self.clicked_button_7
         
     def add_events(self):        
-        QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL(_fromUtf8("clicked()")), self.ui.test)
+        QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL("clicked()"), self.ui.test)
                 
         # events colors leds
         QtCore.QObject.connect(self.ui.push_button_0, QtCore.SIGNAL("clicked()"), self.ui.clicked_button_0)
