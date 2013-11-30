@@ -54,7 +54,7 @@ class Cliente(threading.Thread):
 			print "No se puede establecer la comunicacion"
 			#exit(0)
 			return False
-			
+
 
 	def run(self):
 		while self.activated:
@@ -65,7 +65,7 @@ class Cliente(threading.Thread):
 	def stop(self):
 		self.activated = 0
 		self.Socalo.close()
-			
+
 	def recived(self):
 		return self.Socalo.recv(1024)
 

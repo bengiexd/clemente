@@ -5,6 +5,8 @@ from simplejson import JSONEncoder
 
 encoder = JSONEncoder()
 
+import json
+
 def jsonify_tool_callback(*args, **kwargs):
     response = cherrypy.response
     response.headers['Content-Type'] = 'application/json'
@@ -19,7 +21,11 @@ class Server(object):
     def index(self, limit=4):
         return range(int(limit))
     index.exposed = True
-
+    
+    #@cherrypy.tools.jsonify()
+    def status(self):
+        return json.dumps({'status':'ok'})
+    status.exposed = True
 
 class HTTPServer(threading.Thread):
     
@@ -39,7 +45,7 @@ class HTTPServer(threading.Thread):
         with self.sync:
             cherrypy.server.socket_port = self._port
             #cherrypy.server.socket_host = optional hostname
-            cherrypy.tree.mount(Server(), "/", None)            
+            cherrypy.tree.mount(Server(), "/", None)
             cherrypy.engine.start()
         cherrypy.engine.block()
 
@@ -47,3 +53,9 @@ class HTTPServer(threading.Thread):
         with self.sync:
             cherrypy.engine.exit()
             cherrypy.server.stop()
+   
+# TEST
+"""
+server = HTTPServer()
+server.start()
+"""

@@ -12,8 +12,6 @@ from config_wait_clemente import ConfigDialogWaitClemente
 from config_gui_test_icaro import ConfigDialogTestIcaro
 from config_gui_test_clemente import ConfigDialogTestClemente
 
-from tool_bar import MenuBar
-
 """
     data_conex = {"ip":"", "port":"", "socket":None}
 """
@@ -107,7 +105,7 @@ class ConfigMain():
         ip = self.ui.data_conex["ip"]
         port = self.ui.data_conex["port"]
         print ip, port
-        
+
     def search_clemente(self):
         form = ConfigDialogSearchClemente(self.ui.data_conex)
 
@@ -122,9 +120,9 @@ class ConfigMain():
             self.ui.act_wait_clemente.setIcon(QtGui.QIcon('./../media/icon/wait_clemente.png'))
         elif state == "stop":
             form = ConfigDialogWaitClemente(self.ui.data_conex, self.icaro) 
-        
-    def test_clemente(self):        
-        form = ConfigDialogTestClemente(self.ui.data_conex["socket"])   
+
+    def test_clemente(self):
+        form = ConfigDialogTestClemente(self.ui.data_conex["socket"])
         
     def change_state_clemente(self):
         state = self.ui.data_conex["status_clemente"].toPlainText()
