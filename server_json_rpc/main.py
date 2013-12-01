@@ -1,6 +1,6 @@
 import sys
 
-from server import HTTPServer
+from server_test import Server
 
 def HELP():
 	print "help"
@@ -34,8 +34,8 @@ def main():
 					print "unknown parameter", parameter
 					exit()				
 
-	#servidor = HTTPServer(ip=_ip, port=_port)
-	servidor = HTTPServer()
+	#servidor = Server(ip=_ip, port=_port)
+	servidor = Server()
 	servidor.run()
 	return 0
 

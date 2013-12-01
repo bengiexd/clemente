@@ -2,14 +2,17 @@ import cherrypy
 import cpjsonrpcserver
 import threading
 
-class JsonRpcMethods(cpjsonrpcserver.JsonRpcMethods):
+from solver import SolveRequest
+
+class JsonRpcMethods(cpjsonrpcserver.JsonRpcMethods):    
 
     def hello(self, name):
         return u"Hello " + name
     hello.exposed = True
 
     def leds(self, num):
-        
+        solver = SolveRequest()
+        solver.solve('LEDS', num)
         return u"ok"
     leds.exposed = True
         

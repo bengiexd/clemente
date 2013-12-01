@@ -13,7 +13,7 @@
 #  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details. 
+#  GNU General Public License for more details.
 #  
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
@@ -41,8 +41,7 @@ class Cliente(threading.Thread):
 		self._ip = ip
 		self._port = port
 		threading.Thread.__init__(self)
-		
-		
+				
 	def connect_with_server(self):
 		try:
 			# Instanciamos un objeto de la clase Socalo
@@ -54,7 +53,6 @@ class Cliente(threading.Thread):
 			print "No se puede establecer la comunicacion"
 			#exit(0)
 			return False
-
 
 	def run(self):
 		while self.activated:
