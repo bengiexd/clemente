@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui_main.ui'
 #
-# Created: Sat Nov 30 13:16:15 2013
+# Created: Sun Dec  1 00:44:26 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -62,7 +62,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Clemente 0.2", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Clemente 0.3", None, QtGui.QApplication.UnicodeUTF8))
         self.menuClemente.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuClemente_2.setTitle(QtGui.QApplication.translate("MainWindow", "Clemente", None, QtGui.QApplication.UnicodeUTF8))
         self.menuIcaro.setTitle(QtGui.QApplication.translate("MainWindow", "Icaro", None, QtGui.QApplication.UnicodeUTF8))

@@ -2,7 +2,7 @@ import sys
 from PySide import QtCore, QtGui
 
 sys.path.append('./../UI Pyside/')
-sys.path.append('../../server_rest/')
+sys.path.append('../../server_json_rpc/')
 
 from gui_config_ip_port import Ui_Dialog
 from server import HTTPServer

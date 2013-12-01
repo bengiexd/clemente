@@ -11,6 +11,14 @@ class JsonRpcMethods(cpjsonrpcserver.JsonRpcMethods):
     def multi(self, num):
         return num * 2
     multi.exposed = True
+        
+    def index(self, limit=4):
+        return range(int(limit))
+    index.exposed = True
+        
+    def status(self):
+        return u"ok"
+    status.exposed = True
 
 class HTTPServer(threading.Thread):
 
@@ -42,7 +50,7 @@ class HTTPServer(threading.Thread):
 def main():    
     server = HTTPServer()
     server.start()
-    
+
 if __name__ == "__main__":
     main()
 

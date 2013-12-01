@@ -1,5 +1,5 @@
 import sys
-import time 
+import time
 
 from PySide import QtCore, QtGui
 
