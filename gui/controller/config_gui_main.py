@@ -10,7 +10,7 @@ from gui_main import Ui_MainWindow
 from config_search_clemente import ConfigDialogSearchClemente
 from config_wait_clemente import ConfigDialogWaitClemente
 from config_gui_test_icaro import ConfigDialogTestIcaro
-from config_gui_test_clemente import ConfigDialogTestClemente
+from config_gui_remote_clemente import ConfigDialogRemoteClemente
 
 """
     data_conex = {"ip":"", "port":"", "socket":None}
@@ -23,7 +23,7 @@ class ConfigMain():
         self.MainWindow.adjustSize()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
-        #details
+        # details
         # -- icon application
         self.MainWindow.setWindowIcon(QtGui.QIcon('./../media/icon/icaro.png'))
         self.MainWindow.showMaximized()
@@ -51,8 +51,8 @@ class ConfigMain():
         self.ui.act_search_clemente.triggered.connect(self.search_clemente)
         self.ui.act_wait_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/wait_clemente.png'), "Wait Clemente", self.MainWindow)
         self.ui.act_wait_clemente.triggered.connect(self.wait_clemente)
-        self.ui.act_test_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/clemente-test.png'), "Test Clemente", self.MainWindow)
-        self.ui.act_test_clemente.triggered.connect(self.test_clemente)
+        self.ui.act_remote_clemente = QtGui.QAction(QtGui.QIcon('./../media/icon/clemente-remote.png'), "Remote Clemente", self.MainWindow)
+        self.ui.act_remote_clemente.triggered.connect(self.remote_clemente)
         self.ui.act_exit = QtGui.QAction(QtGui.QIcon('./../media/icon/exit.png'), "Exit", self.MainWindow)
         self.ui.act_exit.triggered.connect(self.MainWindow.close)
         # for icaro
@@ -69,8 +69,8 @@ class ConfigMain():
         fileToolBar.addAction(self.ui.act_search_clemente)
         fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Wait Clemente"))
         fileToolBar.addAction(self.ui.act_wait_clemente)
-        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Test Clemente"))
-        fileToolBar.addAction(self.ui.act_test_clemente)        
+        fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Remote Clemente"))
+        fileToolBar.addAction(self.ui.act_remote_clemente)        
         # options icaro
         fileToolBar = self.MainWindow.addToolBar(self.MainWindow.tr("Connect Icaro"))
         fileToolBar.addAction(self.ui.act_icaro_connect)
@@ -85,7 +85,7 @@ class ConfigMain():
     def add_functions(self):
         self.ui.search_clemente = self.search_clemente
         self.ui.wait_clemente = self.wait_clemente
-        self.ui.test_clemente = self.test_clemente
+        self.ui.remote_clemente = self.remote_clemente
         self.ui.connect_icaro = self.connect_icaro
         self.ui.test_icaro = self.test_icaro
         self.ui.disconnect_icaro = self.disconnect_icaro     
@@ -97,7 +97,7 @@ class ConfigMain():
         QtCore.QObject.connect(self.ui.action_connect_icaro, QtCore.SIGNAL("activated()"), self.ui.connect_icaro)
         QtCore.QObject.connect(self.ui.action_disconnect_icaro, QtCore.SIGNAL("activated()"), self.ui.disconnect_icaro)
         QtCore.QObject.connect(self.ui.action_test_icaro, QtCore.SIGNAL("activated()"), self.ui.test_icaro)
-        QtCore.QObject.connect(self.ui.action_test_clemente, QtCore.SIGNAL("activated()"), self.ui.test_clemente)
+        QtCore.QObject.connect(self.ui.action_remote_clemente, QtCore.SIGNAL("activated()"), self.ui.remote_clemente)
         QtCore.QObject.connect(self.ui.data_conex["status_clemente"], QtCore.SIGNAL("textChanged()"), self.ui.change_state_clemente)        
         
     # functions
@@ -121,8 +121,8 @@ class ConfigMain():
         elif state == "stop":
             form = ConfigDialogWaitClemente(self.ui.data_conex, self.icaro) 
 
-    def test_clemente(self):
-        form = ConfigDialogTestClemente(self.ui.data_conex["socket"])
+    def remote_clemente(self):
+        form = ConfigDialogRemoteClemente(self.ui.data_conex)
         
     def change_state_clemente(self):
         state = self.ui.data_conex["status_clemente"].toPlainText()

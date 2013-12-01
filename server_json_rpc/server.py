@@ -8,9 +8,10 @@ class JsonRpcMethods(cpjsonrpcserver.JsonRpcMethods):
         return u"Hello " + name
     hello.exposed = True
 
-    def multi(self, num):
-        return num * 2
-    multi.exposed = True
+    def leds(self, num):
+        
+        return u"ok"
+    leds.exposed = True
         
     def index(self, limit=4):
         return range(int(limit))
@@ -47,10 +48,13 @@ class HTTPServer(threading.Thread):
             cherrypy.engine.exit()
             cherrypy.server.stop()
 
+# TEST
+"""
 def main():    
     server = HTTPServer()
     server.start()
 
 if __name__ == "__main__":
     main()
+"""
 

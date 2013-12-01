@@ -3,20 +3,19 @@ from PySide import QtCore, QtGui
 
 sys.path.append('./../UI Pyside/')
 
-from gui_test_clemente import Ui_Dialog
+from gui_remote_clemente import Ui_Dialog
 
+class ConfigDialogRemoteClemente():
 
-class ConfigDialogTestClemente():
-    
-    def __init__(self, clemente):
+    def __init__(self, data_conex):
         
         self.Dialog = QtGui.QDialog()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.Dialog)
 
         # atributes
-        self.clemente = clemente
-        
+        self.data_conex = data_conex
+
         self.buttons_leds = {"0":0, "1":0, "2":0, "3":0, "4":0, "5":0, "6":0, "7":0}
         self.add_icons_leds()
         
@@ -61,7 +60,7 @@ class ConfigDialogTestClemente():
         self.ui.clicked_button_6 = self.clicked_button_6
         self.ui.clicked_button_7 = self.clicked_button_7
         
-    def add_events(self):        
+    def add_events(self):
         QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL("clicked()"), self.ui.test)
                 
         # events colors leds
@@ -79,14 +78,15 @@ class ConfigDialogTestClemente():
         for i in range(8):
             n += str(self.buttons_leds[str(i)])
         n = n[::-1]
-        n = "leds(" + str(int(n,2)) + ")"
-        self.clemente.send(n)
+        n = [int(n,2)]
+        print n
+        self.data_conex["http_client"].send(method='leds', data=n)
         
     # functions
     def test(self):
-        _command = str(self.ui.text_edit_command.toPlainText())        
-        if _command is not "":
-            self.clemente.send(_command)
+        command = [str(self.ui.text_edit_command.toPlainText())]
+        if command is not "":            
+            self.data_conex["http_client"].send(method='leds', data=command)
         else:
             print "error datos incorrectos"
             

@@ -35,7 +35,7 @@
     </property>
     <addaction name="action_search_clemente"/>
     <addaction name="action_wait_clemente"/>
-    <addaction name="action_test_clemente"/>
+    <addaction name="action_remote_clemente"/>
    </widget>
    <widget class="QMenu" name="menuIcaro">
     <property name="title">
@@ -86,9 +86,12 @@
     <string>Test</string>
    </property>
   </action>
-  <action name="action_test_clemente">
+  <action name="action_remote_clemente">
    <property name="text">
-    <string>Test</string>
+    <string>Control Remote</string>
+   </property>
+   <property name="toolTip">
+    <string>Remote</string>
    </property>
   </action>
  </widget>

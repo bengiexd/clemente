@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui_main.ui'
 #
-# Created: Sun Dec  1 00:44:26 2013
+# Created: Sun Dec  1 01:29:47 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,12 +43,12 @@ class Ui_MainWindow(object):
         self.action_disconnect_icaro.setObjectName("action_disconnect_icaro")
         self.action_test_icaro = QtGui.QAction(MainWindow)
         self.action_test_icaro.setObjectName("action_test_icaro")
-        self.action_test_clemente = QtGui.QAction(MainWindow)
-        self.action_test_clemente.setObjectName("action_test_clemente")
+        self.action_remote_clemente = QtGui.QAction(MainWindow)
+        self.action_remote_clemente.setObjectName("action_remote_clemente")
         self.menuClemente.addAction(self.actionQuit)
         self.menuClemente_2.addAction(self.action_search_clemente)
         self.menuClemente_2.addAction(self.action_wait_clemente)
-        self.menuClemente_2.addAction(self.action_test_clemente)
+        self.menuClemente_2.addAction(self.action_remote_clemente)
         self.menuIcaro.addAction(self.action_search_icaro)
         self.menuIcaro.addAction(self.action_connect_icaro)
         self.menuIcaro.addAction(self.action_disconnect_icaro)
@@ -73,5 +73,6 @@ class Ui_MainWindow(object):
         self.action_connect_icaro.setText(QtGui.QApplication.translate("MainWindow", "Connect", None, QtGui.QApplication.UnicodeUTF8))
         self.action_disconnect_icaro.setText(QtGui.QApplication.translate("MainWindow", "Disconnect", None, QtGui.QApplication.UnicodeUTF8))
         self.action_test_icaro.setText(QtGui.QApplication.translate("MainWindow", "Test", None, QtGui.QApplication.UnicodeUTF8))
-        self.action_test_clemente.setText(QtGui.QApplication.translate("MainWindow", "Test", None, QtGui.QApplication.UnicodeUTF8))
+        self.action_remote_clemente.setText(QtGui.QApplication.translate("MainWindow", "Control Remote", None, QtGui.QApplication.UnicodeUTF8))
+        self.action_remote_clemente.setToolTip(QtGui.QApplication.translate("MainWindow", "Remote", None, QtGui.QApplication.UnicodeUTF8))
 
