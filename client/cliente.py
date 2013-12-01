@@ -24,7 +24,7 @@
 import socket
 import sys
 import threading
-
+ 
 class Cliente(threading.Thread):
 	""" ClassName Cliente
     	Clase cliente para interactuar con el servidor
