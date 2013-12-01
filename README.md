@@ -6,6 +6,7 @@ Proyecto Clemente
 software para poder manipular plaquitas del proyecto icaro remotamente
 
 explicacion breve del codigo
+
 paquete gui se maneja toda la parte de la interfaz grafica
   paquete "UI Pyside" estan los *.ui con sys respectivos equivalente en python
     los *.ui estan diseñados con qt designer
