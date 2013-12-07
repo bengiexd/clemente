@@ -9,7 +9,7 @@ from server import HTTPServer
 
 class ConfigDialogWaitClemente():
 
-    def __init__(self, data_conex, icaro):
+    def __init__(self, data_conex):
         
         self.Dialog = QtGui.QDialog()
         self.ui = Ui_Dialog()
@@ -18,8 +18,7 @@ class ConfigDialogWaitClemente():
         # set window title
         self.Dialog.setWindowTitle('Wait Clemente')
         # atributes
-        self.ui.data_conex = data_conex
-        self.icaro = icaro
+        self.ui.data_conex = data_conex        
         # add functions
         self.add_functions()
         # add events
@@ -39,7 +38,7 @@ class ConfigDialogWaitClemente():
     # functions
     def print_ok(self):
         print self.ui.text_edit_ip.toPlainText()
-        
+
     def accept_data(self):
         _ip = str(self.ui.text_edit_ip.toPlainText())
         _port = str(self.ui.text_edit_port.toPlainText())
@@ -47,8 +46,8 @@ class ConfigDialogWaitClemente():
             self.ui.data_conex["ip"] = _ip
             self.ui.data_conex["port"] = int(_port)
             # search one specified server with client
-            self.ui.data_conex["http_server"] = HTTPServer(ip=_ip, port=self.ui.data_conex["port"])            
-            # start thread of server
+            self.ui.data_conex["http_server"] = HTTPServer(self.ui.data_conex)            
+            # start server
             self.ui.data_conex["http_server"].start()
             self.ui.data_conex["status_clemente"].setText("wait")            
             self.Dialog.accept()

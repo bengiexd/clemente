@@ -27,7 +27,7 @@ class Ui_Dialog(object):
         self.push_button_exit.setObjectName("push_button_exit")
 
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.push_button_test, QtCore.SIGNAL("clicked()"), self.text_edit_command.clear)
+        #QtCore.QObject.connect(self.push_button_test, QtCore.SIGNAL("clicked()"), self.text_edit_command.clear)
         QtCore.QObject.connect(self.push_button_exit, QtCore.SIGNAL("clicked()"), Dialog.close)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

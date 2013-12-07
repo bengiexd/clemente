@@ -27,16 +27,19 @@ class ConfigDialogTestIcaro():
     def add_functions(self):
         self.ui.test = self.test
         
-    def add_events(self):        
+    def add_events(self):
         QtCore.QObject.connect(self.ui.push_button_test, QtCore.SIGNAL("clicked()"), self.ui.test)
-        
+
     # functions
-    def test(self):
-        _command = str(self.ui.text_edit_command.toPlainText())        
+    def test(self):        
+        _command = str(self.ui.text_edit_command.toPlainText())                
+        self.icaro.activar(int(_command))
         if _command is not "":
             self.icaro.activar(int(_command))
         else:
-            print "error datos incorrectos"
+            print "error datos incorrectos"        
+
+
 
 
 

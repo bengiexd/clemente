@@ -4,6 +4,9 @@ class SolveRequest():
     direcciones = {'ADELANTE':"Adelante",'ATRAS':"Atras",
                    'IZQUIERDA':'Izquierda','DERECHA':"Derecha",
                    'LEDS':'Leds'}
+    
+    def set_icaro(self, icaro):
+        self.icaro = icaro
 
     def send_data_icaro(self, method, data):
         if self.icaro is None:

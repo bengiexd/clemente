@@ -4,6 +4,7 @@ import time
 from PySide import QtCore, QtGui
 
 sys.path.append('./../UI Pyside/')
+sys.path.append('./../PyInterp-master/')
 
 from gui_main import Ui_MainWindow
 
@@ -11,6 +12,8 @@ from config_search_clemente import ConfigDialogSearchClemente
 from config_wait_clemente import ConfigDialogWaitClemente
 from config_gui_test_icaro import ConfigDialogTestIcaro
 from config_gui_remote_clemente import ConfigDialogRemoteClemente
+
+from QIPythonWidget import QIPythonWidget
 
 """
     data_conex = {"ip":"", "port":"", "socket":None}
@@ -32,13 +35,15 @@ class ConfigMain():
         # create toolbar
         self.create_tool_bars()
         # atributes
-        self.icaro = None
         self.ui.data_conex = {"ip":"", "port":"", "status_clemente":QtGui.QTextEdit(), "socket":None}
         self.ui.data_conex["status_clemente"].setText("stop")
         # add functions
         self.add_functions()
         # add events
         self.add_events()
+        
+        self.add_interp()
+        
         self.show()
 
     def show(self):
@@ -99,7 +104,11 @@ class ConfigMain():
         QtCore.QObject.connect(self.ui.action_test_icaro, QtCore.SIGNAL("activated()"), self.ui.test_icaro)
         QtCore.QObject.connect(self.ui.action_remote_clemente, QtCore.SIGNAL("activated()"), self.ui.remote_clemente)
         QtCore.QObject.connect(self.ui.data_conex["status_clemente"], QtCore.SIGNAL("textChanged()"), self.ui.change_state_clemente)        
-        
+
+    def add_interp(self):        
+        self.iPython = QIPythonWidget()        
+        self.ui.vertical_layout_interp.addWidget(self.iPython)
+    
     # functions
     def see_data(self):
         ip = self.ui.data_conex["ip"]
@@ -119,11 +128,11 @@ class ConfigMain():
             self.ui.act_wait_clemente.setText("Wait")
             self.ui.act_wait_clemente.setIcon(QtGui.QIcon('./../media/icon/wait_clemente.png'))
         elif state == "stop":
-            form = ConfigDialogWaitClemente(self.ui.data_conex, self.icaro) 
+            form = ConfigDialogWaitClemente(self.ui.data_conex)
 
     def remote_clemente(self):
         form = ConfigDialogRemoteClemente(self.ui.data_conex)
-        
+
     def change_state_clemente(self):
         state = self.ui.data_conex["status_clemente"].toPlainText()
         if state == "wait":
@@ -133,25 +142,25 @@ class ConfigMain():
             self.ui.act_wait_clemente.setIcon(QtGui.QIcon('./../media/icon/clemente_stop.png'))
         elif state == "stop":
             pass
-        
+
     def connect_icaro(self):
         import apicaro
         port = apicaro.puerto()
         if port.iniciar():
-            self.icaro = port
+            self.ui.data_conex['icaro'] = port            
             print "icaro connect succesfull"
         else:
             print "error: icaro don't connect"
 
     def test_icaro(self):
-        if self.icaro is not None:
-            form = ConfigDialogTestIcaro(self.icaro)
+        if self.ui.data_conex['icaro'] is not None:
+            form = ConfigDialogTestIcaro(self.ui.data_conex['icaro'])
         else:
             print "error icaro don`t exists"
-            
+
     def disconnect_icaro(self):
-        if self.icaro is not None:
-            if self.icaro.cerrar():
+        if self.ui.data_conex['icaro'] is not None:
+            if self.ui.data_conex['icaro'].cerrar():
                 print "close correct"
         else:
             print "error when close icaro"
